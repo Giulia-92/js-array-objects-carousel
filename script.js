@@ -41,14 +41,14 @@ let itemTemplate = "";
 let thumbTemplate = "";
 
 // preparo una varibile con l'indice dell'elemento attivo e la pongo inizialmente a 0 ovvero il primo elemento dell'array
-let currentIndexActive = 0;
+//let currentIndexActive = 0;
 
 //eseguo il ciclo for sull'array delle immagini (items) e popolo l'html delle due varibaili da stampare nei due contenitori (immagini e thumbnails)
 for (let i = 0; i < items.length; i++) {
   let classActive = "";
-  if (i === currentIndexActive) {
-    classActive = "active";
-  }
+  //if (i === currentIndexActive) {
+    //classActive = "active";
+  //}
   itemTemplate += `
   <div class="item ${classActive}">
     <img src="${items[i].immagine}" />
