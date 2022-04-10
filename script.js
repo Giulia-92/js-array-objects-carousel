@@ -51,22 +51,22 @@ for (let i = 0; i < items.length; i++) {
   }
   itemTemplate += `
   <div class="item ${classActive}">
-    <img src="${items[i]}" />
+    <img src="${items[i].immagine}" />
       <div class="title">
-        <h2>${title[i]}</h2>
-        <p>${text[i]}</p>
+        <h2>${items[i].titolo}</h2>
+        <p>${items[i].descrizione}</p>
       </div>
   </div>`;
   thumbTemplate += `
   <div class="thumb ${classActive}">
-    <img src="${items[i]}" alt="" />
+    <img src="${items[i].immagine}" alt="" />
   </div>`;
 }
 //console.log(thumbTemplate);
 
 // metto in due variabili rispettivamente i contenitori che si trovano nell'html
-const itemsContainer = document.querySelector(".items-container");
-const thumbsContainer = document.querySelector(".thumbs-container");
+//const itemsContainer = document.querySelector(".items-container");
+//Sconst thumbsContainer = document.querySelector(".thumbs-container");
 //console.log(itemContainer);
 
 //stampo l'html corrispondente nei due contenitori
@@ -117,3 +117,4 @@ function slideUp() {
 
 next.addEventListener("click", slideDown);
 prev.addEventListener("click", slideUp);
+const timer = setInterval (slideDown, 2000);
