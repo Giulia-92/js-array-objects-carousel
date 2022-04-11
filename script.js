@@ -46,9 +46,9 @@ let thumbTemplate = "";
 //eseguo il ciclo for sull'array delle immagini (items) e popolo l'html delle due varibaili da stampare nei due contenitori (immagini e thumbnails)
 for (let i = 0; i < items.length; i++) {
   let classActive = "";
-  //if (i === currentIndexActive) {
-    //classActive = "active";
-  //}
+  if (i === currentIndexActive) {
+    classActive = "active";
+  }
   itemTemplate += `
   <div class="item ${classActive}">
     <img src="${items[i].immagine}" />
@@ -65,9 +65,9 @@ for (let i = 0; i < items.length; i++) {
 //console.log(thumbTemplate);
 
 // metto in due variabili rispettivamente i contenitori che si trovano nell'html
-//const itemsContainer = document.querySelector(".items-container");
+const itemsContainer = document.querySelector(".items-container");
 //Sconst thumbsContainer = document.querySelector(".thumbs-container");
-//console.log(itemContainer);
+console.log(itemContainer);
 
 //stampo l'html corrispondente nei due contenitori
 itemsContainer.innerHTML = itemTemplate;
@@ -81,40 +81,38 @@ thumbsContainer.innerHTML += thumbTemplate;
 const next = document.querySelector(" .fa-circle-chevron-down");
 const prev = document.querySelector(" .fa-circle-chevron-up");
 //console.log(next, prev);
-function slideDown() {
+function slideUpDown() {
   //prendere immagine con currentIndexActive e togliere classe active
   const imgs = document.getElementsByClassName("item");
   imgs[currentIndexActive].classList.remove("active");
   const thumbs = document.getElementsByClassName("thumb");
   thumbs[currentIndexActive].classList.remove("active");
   //console.log(imgs);
-  if (currentIndexActive === 4) {
-    currentIndexActive = 0;
-  } else {
-    currentIndexActive++;
-  }
-  //console.log(currentIndexActive);
+
+  console.log(currentIndexActive);
   imgs[currentIndexActive].classList.add("active");
-  //console.log(currentIndexActive);
+  console.log(currentIndexActive);
   thumbs[currentIndexActive].classList.add("active");
 }
-function slideUp() {
+function slideUpDown() {
+  // direction = this.id;
+  const direction = ( this && this.id === 'iNext') ? 'iNext' :'iPrev';
+
   const imgs = document.getElementsByClassName("item");
   imgs[currentIndexActive].classList.remove("active");
   const thumbs = document.getElementsByClassName("thumb");
   thumbs[currentIndexActive].classList.remove("active");
-  //console.log(imgs);
-  if (currentIndexActive === 0) {
-    currentIndexActive = items.length - 1;
+  if (direction==='iNext'){
+    currentIndexActive = (currentIndexActive === 0) ? items.length - 1 : currentIndexActive--;
   } else {
-    currentIndexActive--;
-  }
+    currentIndexActive = (currentIndexActive === 4) ? currentIndexActive++;
+  } 
   //console.log(currentIndexActive);
   imgs[currentIndexActive].classList.add("active");
   //console.log(currentIndexActive);
   thumbs[currentIndexActive].classList.add("active");
 }
 
-next.addEventListener("click", slideDown);
-prev.addEventListener("click", slideUp);
-const timer = setInterval (slideDown, 2000);
+next.addEventListener("click", slideUpDown);
+prev.addEventListener("click", slideUpDown);
+const timer = setInterval (slideUpDown, 2000);
